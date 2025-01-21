@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="/public/style.css">
+</head>
+
+<body>
+	<div class="container">
+		<div class="todo-app">
+			<h1><i class="fa-regular fa-pen-to-square"></i>To-do List:</h1>
+			<div>
+				<form action="/addData" method="post" class="row">
+					<input type="text" name="title" placeholder="Add a new title">
+					<input type="text" name="detail" placeholder="Add a new detail">
+					<button type="submit">Add</button>
+				</form>
+			</div>
+			<ul id="list-container">
+				<% list.forEach((item, index)=> { %>
+					<li class="<%= item.completed ? 'checked' : '' %>">
+						<!-- Text Container -->
+						<div class="text-container">
+							<h1>
+								<%= item.title %>
+							</h1>
+							<p>
+								<%= item.detail %>
+							</p>
+						</div>
+
+						<!-- Button Container -->
+						<div class="button-container">
+							<a href="/EditData?id=<%=item.id%>"><button>Edit</button></a>
+							<a href="/deleteData?id=<%=item.id%>"><button>Delete</button></a>
+						</div>
+					</li>
+					<% }) %>
+			</ul>
+		</div>
+	</div>
+</body>
+
+</html>

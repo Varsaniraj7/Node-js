@@ -1,0 +1,71 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.6rem;
+    background: linear-gradient(135deg, #845ec2, #b39cd0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    max-width: 50rem;
+    width: 100%;
+    padding: 3rem;
+    background: #ffffff;
+    border-radius: 1rem;
+    box-shadow: 0 0.8rem 1.6rem rgba(0, 0, 0, 0.1);
+}
+
+.row {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.row input {
+    width: 100%;
+    padding: 1.2rem;
+    border: 1px solid #ccc;
+    border-radius: 0.8rem;
+    font-size: 1.6rem;
+    color: #555;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.row input:focus {
+    border-color: #845ec2;
+    box-shadow: 0 0 0.4rem rgba(132, 94, 194, 0.5);
+    outline: none;
+}
+
+.row button {
+    padding: 1.4rem 3rem;
+    background-color: #845ec2;
+    color: white;
+    border: none;
+    border-radius: 0.8rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.row button:hover {
+    background-color: #6b189c;
+    transform: scale(1.05);
+}
+
+.row button:active {
+    transform: scale(0.98);
+}
+
+.row input::placeholder {
+    color: #999;
+}
