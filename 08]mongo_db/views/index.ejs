@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+	<style>
+		/* General Styles */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		html {
+			font-size: 62.5%;
+		}
+
+		body {
+			font-size: 1.6rem;
+			font-family: "Poppins", sans-serif;
+			background: linear-gradient(135deg, #845ec2, #b39cd0);
+			margin: 0;
+			padding: 0;
+			min-height: 100vh;
+			/* Ensures background covers the entire screen height */
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.container {
+			width: 100%;
+			max-width: 54rem;
+			/* margin: 10rem auto 2rem; */
+			padding: 4rem 3rem;
+			border-radius: 1rem;
+			/* background: linear-gradient(to right, #ece9e6, #ffffff); */
+			/* box-shadow: rgba(0, 0, 0, 0.15) 0rem 0.2rem 0.8rem; */
+			min-height: calc(100vh - 20rem);
+			/* Ensures content doesn't shrink too much */
+			display: flex;
+			flex-direction: column;
+		}
+
+		.todo-app {
+			width: 100%;
+			max-width: 54rem;
+			/* margin: 10rem auto 2rem; */
+			padding: 4rem 3rem;
+			border-radius: 1rem;
+			background: linear-gradient(to right, #ece9e6, #ffffff);
+			box-shadow: rgba(0, 0, 0, 0.15) 0rem 0.2rem 0.8rem;
+		}
+
+		.todo-app h1 {
+			color: #4f1787;
+			display: flex;
+			align-items: center;
+			margin-bottom: 2rem;
+			font-size: 2.4rem;
+		}
+
+		.todo-app i {
+			margin-right: 1rem;
+		}
+
+		.row {
+			display: flex;
+			flex-direction: column;
+			gap: 1.5rem;
+			margin-bottom: 2.5rem;
+		}
+
+		.row input {
+			width: 100%;
+			padding: 1.2rem;
+			border: 1px solid #ccc;
+			border-radius: 0.8rem;
+			font-size: 1.6rem;
+		}
+
+		.row button {
+			border: none;
+			outline: none;
+			padding: 1.6rem 5rem;
+			background-color: #7a1cac;
+			color: #fff;
+			font-weight: 700;
+			border-radius: 4rem;
+			cursor: pointer;
+			transition: background-color 0.3s;
+		}
+
+		.row button:hover {
+			background-color: #6b189c;
+		}
+
+		ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		ul li {
+			display: flex;
+			justify-content: space-between;
+			/* Align text and buttons on opposite sides */
+			align-items: center;
+			/* Vertically center items */
+			padding: 1.6rem;
+			position: relative;
+			border-bottom: 1px solid #ddd;
+			border-radius: 0.8rem;
+			background-color: #fff;
+			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+			transition: background-color 0.3s;
+		}
+
+		ul li:hover {
+			background-color: #f9f9f9;
+		}
+
+		ul li h1 {
+			font-size: 1.8rem;
+			font-weight: 600;
+			color: #333;
+			margin: 0;
+		}
+
+		ul li p {
+			font-size: 1.4rem;
+			color: #666;
+			margin: 0;
+		}
+
+		/* Wrap text (title and details) on the left */
+		.text-container {
+			display: flex;
+			flex-direction: column;
+			gap: 0.5rem;
+		}
+
+		/* Buttons container on the right */
+		.button-container {
+			display: flex;
+			gap: 1rem;
+			/* Space between Edit and Delete buttons */
+		}
+
+		.button-container button {
+			padding: 0.8rem 2rem;
+			border: none;
+			border-radius: 0.5rem;
+			font-size: 1.4rem;
+			font-weight: 500;
+			cursor: pointer;
+			transition: background-color 0.3s, transform 0.2s;
+		}
+
+		.button-container button:hover {
+			transform: scale(1.05);
+		}
+
+		.button-container button:nth-child(1) {
+			background-color: #007bff;
+			color: white;
+		}
+
+		.button-container button:nth-child(1):hover {
+			background-color: #0056b3;
+		}
+
+		.button-container button:nth-child(2) {
+			background-color: #dc3545;
+			color: white;
+		}
+
+		.button-container button:nth-child(2):hover {
+			background-color: #a71d2a;
+		}
+
+		/* Checked Task Styling */
+		ul li.checked {
+			color: #555;
+			text-decoration: line-through;
+			background-color: #f0f0f0;
+		}
+
+		ul li.checked h1 {
+			color: #888;
+		}
+
+		ul li.checked p {
+			color: #aaa;
+		}
+
+		ul li.checked:hover {
+			background-color: #e7e7e7;
+		}
+	</style>
+
+</head>
+
+<body>
+	<div class="container">
+		<div class="todo-app">
+			<h1><i class="fa-regular fa-pen-to-square"></i>To-do List:</h1>
+			<div>
+				<form action="/addData" method="post" class="row">
+					<input type="text" name="title" placeholder="Add a new title">
+					<input type="text" name="detail" placeholder="Add a new detail">
+					<button type="submit">Add</button>
+				</form>
+			</div>
+			<ul id="list-container">
+				<% data.forEach((item, index)=> { %>
+					<li class="<%= item.completed ? 'checked' : '' %>">
+						<!-- Text Container -->
+						<div class="text-container">
+							<h1>
+								<%= item.title %>
+							</h1>
+							<p>
+								<%= item.detail %>
+							</p>
+						</div>
+
+						<!-- Button Container -->
+						<div class="button-container">
+							<a href="/EditData?id=<%=item.id%>"><button>Edit</button></a>
+							<a href="/deleteData?id=<%=item.id%>"><button>Delete</button></a>
+						</div>
+					</li>
+					<% }) %>
+			</ul>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-900 text-white min-h-screen">
+    <!-- Header -->
+    <div class="p-6 bg-gray-800">
+        <h1 class="text-4xl font-bold text-center">Book Store</h1>
+    </div>
+
+    <!-- Add Book Form -->
+    <div class="max-w-2xl mx-auto mt-6 p-6 bg-gray-800 rounded-lg shadow-lg">
+        <h2 class="text-2xl font-semibold mb-4">Add a New Book</h2>
+        <form action="/addBook" method="post" class="space-y-4">
+            <div>
+                <label for="image" class="block mb-2 text-sm font-medium">Book Image URL</label>
+                <input type="text" id="image" name="image" placeholder="Enter Book Image"
+                    class="w-full p-2 rounded bg-gray-700 text-white border border-gray-600">
+            </div>
+            <div>
+                <label for="title" class="block mb-2 text-sm font-medium">Book Title</label>
+                <input type="text" id="title" name="title" placeholder="Enter Book Title"
+                    class="w-full p-2 rounded bg-gray-700 text-white border border-gray-600">
+            </div>
+            <div>
+                <label for="author" class="block mb-2 text-sm font-medium">Author Name</label>
+                <input type="text" id="author" name="author" placeholder="Enter Author Name"
+                    class="w-full p-2 rounded bg-gray-700 text-white border border-gray-600">
+            </div>
+            <div>
+                <label for="publish" class="block mb-2 text-sm font-medium">Publish Date</label>
+                <input type="date" id="publish" name="publish" placeholder="Enter Publish Date"
+                    class="w-full p-2 rounded bg-gray-700 text-white border border-gray-600">
+            </div>
+            <div>
+                <label for="price" class="block mb-2 text-sm font-medium">Price</label>
+                <input type="number" id="price" name="price" placeholder="Enter Book Price"
+                    class="w-full p-2 rounded bg-gray-700 text-white border border-gray-600">
+            </div>
+            <div>
+                <label for="copies" class="block mb-2 text-sm font-medium">Copies Sold</label>
+                <input type="number" id="copies" name="copies" placeholder="Enter Sold Copies"
+                    class="w-full p-2 rounded bg-gray-700 text-white border border-gray-600">
+            </div>
+            <button type="submit"
+                class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg font-semibold">
+                Add Book
+            </button>
+        </form>
+    </div>
+
+    <!-- Book List -->
+    <div class="max-w-4xl mx-auto mt-10">
+        <h2 class="text-2xl font-semibold mb-6 text-center">Books</h2>
+        <div class="space-y-6">
+            <% data.map((item, index) => { %>
+                <div class="p-6 bg-gray-800 rounded-lg shadow-lg grid grid-cols-1 sm:grid-cols-6 gap-4 items-center">
+                    <img src="<%= item.image %>" alt="Book Image" class="h-24 w-16 object-cover rounded">
+                    <div class="sm:col-span-2">
+                        <h3 class="text-lg font-bold"><%= item.title %></h3>
+                        <p class="text-sm text-gray-400">by <%= item.author %></p>
+                    </div>
+                    <div class="text-sm w-[300px]">
+                        <p><span class="font-medium">Publish Date:</span> <%= item.publish %></p>
+                        <p><span class="font-medium">Price:</span> $<%= item.price %></p>
+                        <p><span class="font-medium">Copies Sold:</span> <%= item.copies %></p>
+                    </div>
+                    <div class="flex ml-[100px] space-x-2">
+                        <a href="/deleteBook?id=<%= item.id %>">
+                            <button
+                                class="bg-red-600 hover:bg-red-700 text-white py-1 px-3 rounded-lg font-semibold">Delete</button>
+                        </a>
+                        <a href="/editBook?id=<%= item.id %>">
+                            <button
+                                class="bg-yellow-500 hover:bg-yellow-600 text-black py-1 px-3 rounded-lg font-semibold">Edit</button>
+                        </a>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</body>
+
+</html>
