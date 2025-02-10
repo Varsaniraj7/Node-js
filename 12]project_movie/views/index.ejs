@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navbar</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/swiper-bundle.min.css">
+
+    <style>
+        /* Google Fonts - Poppins */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+
+
+        .slide-container {
+            max-width: 1120px;
+            width: 100%;
+            padding: 40px 0;
+        }
+
+        .slide-content {
+            margin: 0 40px;
+            overflow: hidden;
+            border-radius: 25px;
+        }
+
+        .card {
+            border-radius: 25px;
+            background-color: #FFF;
+        }
+
+        .image-content,
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* padding: 10px 14px; */
+        }
+
+        .image-content {
+            position: relative;
+            row-gap: 5px;
+            /* padding: 25px 0; */
+        }
+
+
+
+
+        .card-image {
+            /* position: relative; */
+            height: 400px;
+            width: 100%;
+            /* border-radius: 50%; */
+            background: #FFF;
+            border-radius: 25px;
+            /* padding: 3px; */
+        }
+
+        .card-image .card-img {
+
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 25px;
+            /* border-radius: 50%; */
+            border: 4px solid white;
+        }
+
+        .card-content {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .name {
+            font-size: 18px;
+            font-weight: 800;
+            color: black;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            width: 100%;
+            margin-top: 5px;
+            font-size: 16px;
+            color: #050505;
+            display: flex;
+            justify-items: center;
+            align-items: center;
+            gap: 12px;
+            text-align: left;
+        }
+
+        .description span {
+            width: 20px;
+            font-size: 20px;
+        }
+
+        .book {
+            width: 100%;
+            background: #f3f3f5;
+            border-radius: 9px;
+            padding: 9px;
+            display: flex;
+            font-size: 16px;
+            font-weight: 700;
+            justify-content: space-between;
+        }
+
+        .button {
+            border: none;
+            font-size: 16px;
+            padding-left: 2px;
+            border-left: 2px solid #E7E8EA;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .action {
+            width: 100%;
+            height: 40px;
+            margin: 10px 0px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .btn {
+            border-radius: 9px;
+            padding: 5px 18px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .edit {
+            background-color: #4070F4;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .edit:hover {
+            background-color: #2f5bd3;
+            /* Darker blue on hover */
+            transform: scale(1.05);
+            /* Slightly enlarges the button */
+        }
+
+        .delete {
+            background-color: #f44040;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .delete:hover {
+            background-color: #d32f2f;
+            /* Darker red on hover */
+            transform: scale(1.05);
+        }
+
+
+        .swiper-navBtn {
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+
+        .swiper-navBtn:hover {
+            color: #4070F4;
+        }
+
+        .swiper-navBtn::before,
+        .swiper-navBtn::after {
+            font-size: 38px;
+        }
+
+        .swiper-button-next {
+            right: 0;
+        }
+
+        .swiper-button-prev {
+            left: 0;
+        }
+
+        .swiper-pagination-bullet {
+            background-color: #FFF;
+            opacity: 1;
+        }
+
+        .swiper-pagination-bullet-active {
+            background-color: #4070F4;
+        }
+
+        @media screen and (max-width: 768px) {
+            .slide-content {
+                margin: 0 10px;
+            }
+
+            .swiper-navBtn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Navbar -->
+    <nav class="bg-black fixed w-full z-20 top-0 left-0 border-b border-gray-700">
+        <div class="max-w-screen-xl flex items-center justify-between mx-auto p-4">
+            <!-- Logo -->
+            <a href="#" class="flex items-center space-x-3">
+                <img src="https://www.district.in/assets/images/logo/district-logo-light.svg" class="w-full h-10"
+                    alt="Logo">
+                <!-- <span class="self-center text-2xl font-semibold text-white">Flowbite</span> -->
+            </a>
+
+            <!-- Desktop Navbar -->
+            <div class="hidden md:flex w-full justify-center">
+                <ul class="flex flex-row space-x-8 font-medium text-white">
+                    <li><a href="#"><button
+                                class="w-full h-[40px] bg-[#ebd514ad] flex justify-center items-center px-8 text-[#FAFAFA] text-[16px] font-bold rounded-full lg:text-[18px] 2xl:px-[70px]">Events</button></a>
+                    </li>
+                    <li><a href="#"><button
+                                class="w-full h-[40px] bg-[#212121] flex justify-center items-center px-8 text-[#FAFAFA] text-[16px] font-bold rounded-full lg:text-[18px] 2xl:px-[70px] border-2 border-transparent hover:border-gray-400 transition duration-300">Dining</button></a>
+                    </li>
+                    <li><a href="#"><button
+                                class="w-full h-[40px] bg-[#212121] flex justify-center items-center px-8 text-[#FAFAFA] text-[16px] font-bold rounded-full lg:text-[18px] 2xl:px-[70px] border-2 border-transparent hover:border-gray-400 transition duration-300">Movies</button></a>
+                    </li>
+                    <li><a href="/addMovie"><button
+                                class="w-full h-[40px] bg-[#212121] flex justify-center items-center px-8 text-[#FAFAFA] text-[16px] font-bold rounded-full lg:text-[18px] 2xl:px-[70px] border-2 border-transparent hover:border-gray-400 transition duration-300">Add
+                                Movie</button></a></li>
+                </ul>
+            </div>
+
+            <!-- Profile Icon & Mobile Menu Button -->
+            <div class="flex items-center space-x-5">
+                <div class="border rounded-full text-white px-3 py-3 flex items-center cursor-pointer">
+                    <i class="fa-regular fa-user"></i>
+                </div>
+
+                <!-- Mobile Menu Button (Hidden on md and larger) -->
+                <button id="menu-btn" type="button"
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-white rounded-lg md:hidden hover:bg-gray-700 focus:outline-none">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke="white">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="menu"
+            class="hidden absolute top-16 left-0 w-full bg-black md:hidden transition-all ease-in-out duration-300">
+            <ul class="flex flex-col text-white text-center py-4 space-y-2">
+                <li><a href="#" class="block py-2 px-3 hover:text-blue-400"><button
+                            class="w-full h-[40px] bg-[#ebd514ad] text-[#FAFAFA] text-[16px] font-bold rounded-full">Events</button></a>
+                </li>
+                <li><a href="#" class="block py-2 px-3"><button
+                            class="w-full h-[40px] bg-[#212121] text-[#FAFAFA] text-[16px] font-bold rounded-full border-2 border-transparent hover:border-gray-400 transition duration-300">Movies</button></a>
+                </li>
+                <li><a href="#" class="block py-2 px-3"><button
+                            class="w-full h-[40px] bg-[#212121] text-[#FAFAFA] text-[16px] font-bold rounded-full border-2 border-transparent hover:border-gray-400 transition duration-300">Dining</button></a>
+                </li>
+                <li><a href="/addMovie" class="block py-2 px-3"><button
+                            class="w-full h-[40px] bg-[#212121] text-[#FAFAFA] text-[16px] font-bold rounded-full border-2 border-transparent hover:border-gray-400 transition duration-300">Add
+                            Movie</button></a></li>
+            </ul>
+        </div>
+
+
+    </nav>
+
+    <!-- Page Content (Prevents Overlap with Navbar) -->
+    <div class="pt-20 w-full h-auto pb-[100px]"
+        style="background-image: url('https://www.district.in/assets/images/background-placeholder.png'); background-position: center; background-size: cover;">
+        <div class="w-full h-full bg-[#13131652]">
+            <h6 class="text-3xl font-bold text-left px-[16px] text-white pt-14 lg:text-center">IDFC FIRST Bank</h6>
+            <h1 class="text-4xl font-bold text-left px-[16px] text-white mt-4 lg:text-center">India vs England Series
+            </h1>
+            <p class="text-left px-[16px] mt-4 text-[#CFCFD3] lg:text-center lg:px-[196px]">Get ready for an
+                exhilarating clash as India faces England in the much-anticipated series. Witness your favourite players
+                in action, delivering thrilling moments, big hits, and intense competition.</p>
+            <h1 class="text-3xl font-bold text-left px-[16px] text-white mt-4 lg:text-center">GRAB your tickets now!
+            </h1>
+            <div class="slide-container swiper">
+                <div class="slide-content">
+                    <div class="card-wrapper swiper-wrapper">
+                        <% data.map((e,i)=>{%>
+                            <div class="card swiper-slide">
+                                <div class="image-content">
+                                    <!-- <span class="overlay"></span> -->
+
+                                    <div class="card-image">
+                                        <img src="/<%=e.img%>"
+                                            alt="" class="card-img">
+                                    </div>
+                                </div>
+
+                                <div class="card-content">
+                                    <h2 class="name"><%=e.title%></h2>
+                                    <p class="description"><span><i class="fa-regular fa-calendar-days"></i></span><%=e.date%> | <%=e.time%> pm Onwards</p>
+                                    <p class="description"><span><i class="fa-solid fa-location-dot"></i></span><%=e.location%></p>
+                                    <h2 class="book"><%=e.price%> <button class="button">Book Now</button></h2>
+                                    <div class="action">
+                                        <a href="/editMovie/<%=e.id%>"><button class="btn edit">Edit</button></a>
+                                        <a href="/deleteMovie/<%=e.id%>"><button class="btn delete">Delete</button></a>
+                                    </div>
+                                </div>
+                            </div>
+                        <%})%>
+
+                    </div>
+                </div>
+
+                <div class="swiper-button-next swiper-navBtn"></div>
+                <div class="swiper-button-prev swiper-navBtn"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="pt-20 w-full h-auto px-6 py-8 xl:py-[100px] flex flex-col md:flex-row items-center justify-between text-center md:text-left"
+        style="background-image: url('http://district.in/assets/images/district-banner-bg.png'); background-position: center; background-size: cover;">
+
+        <div class="px-6 md:px-14 flex flex-col items-center md:items-start">
+
+            <img class="w-24 h-24 md:w-[150px] md:h-[150px]"
+                src="https://www.district.in/assets/images/logo/district-logo-light.svg" alt="District Logo">
+
+            <h1 class="text-2xl md:text-3xl text-white font-bold">
+                The best of events, movies, dining, and everything you love.
+            </h1>
+            <p class="mt-2 text-lg md:text-xl text-gray-200">Find your next plan on District</p>
+        </div>
+
+        <!-- QR Code -->
+        <div class="px-6 md:px-14 flex flex-col items-center mt-6 md:mt-0">
+            <img src="https://www.district.in/assets/images/download-qr.svg" alt="QR Code"
+                class="w-40 h-40 md:w-[300px] md:h-[200px] p-2 rounded-xl">
+            <p class="mt-2 font-bold text-white">Scan to download the app</p>
+        </div>
+
+    </div>
+
+    <footer class="bg-black text-white py-6">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between px-4">
+            <!-- Links Section -->
+            <div class="flex space-x-6 text-gray-300">
+                <a href="#" class="hover:text-white">Terms & Conditions</a>
+                <a href="#" class="hover:text-white">Privacy Policy</a>
+                <a href="#" class="hover:text-white">Contact Us</a>
+            </div>
+
+            <!-- Social Media Icons -->
+            <div class="flex space-x-4 mt-4 md:mt-0">
+                <a href="#"
+                    class="bg-gray-300  w-[50px] h-[50px] flex justify-center items-center text-2xl rounded-full text-black hover:bg-gray-400">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#"
+                    class="bg-gray-300  w-[50px] h-[50px] flex justify-center items-center text-2xl rounded-full text-black hover:bg-gray-400">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#"
+                    class="bg-gray-300  w-[50px] h-[50px] flex justify-center items-center text-2xl rounded-full text-black hover:bg-gray-400">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#"
+                    class="bg-gray-300 w-[50px] h-[50px] flex justify-center items-center text-2xl rounded-full text-black hover:bg-gray-400">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- JavaScript for Mobile Menu -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const menu = document.getElementById('menu');
+
+        menuBtn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
+
+</body>
+
+<!-- Swiper JS -->
+<script src="//cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/swiper-bundle.min.js"></script>
+
+<!-- JavaScript -->
+<!--Uncomment this line-->
+<script src="//cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/script.js"></script>
+
+</html>
+
+<script>
+
+    var swiper = new Swiper(".slide-content", {
+        slidesPerView: 3,
+        spaceBetween: 25,
+        loop: true,
+        centerSlide: 'true',
+        fade: 'true',
+        grabCursor: 'true',
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+            dynamicBullets: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+
+        breakpoints: {
+            0: {
+                slidesPerView: 1,
+            },
+            520: {
+                slidesPerView: 2,
+            },
+            950: {
+                slidesPerView: 3,
+            },
+        },
+    });
+
+</script>

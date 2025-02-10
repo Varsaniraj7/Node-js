@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/updateMovieData" method="post" enctype="multipart/form-data">
+        <input type="text" value="<%=data.id%>">
+        <input type="text" name="title" value="<%=data.title%>" placeholder="Enter Movie Title">
+        <input type="date" name="date" value="<%=data.date%>">
+        <input type="time" name="time" value="<%=data.time%>">
+        <input type="text" name="location" value="<%=data.location%>" placeholder="Enter location">
+        <input type="file" name="img" value="<%=data.img%>">
+        <img src="/<%=data.img%>" class="w-[250px] h-[250px]" alt="">
+        <input type="number" name="price" value="<%=data.price%>" placeholder="Enter Price">
+        <button type="submit">Update Movie</button>
+    </form>
+</body>
+</html>
