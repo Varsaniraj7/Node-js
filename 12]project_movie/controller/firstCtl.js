@@ -35,6 +35,7 @@ module.exports.editMovie = async (req, res) => {
     await schema.findById(req.params.id)
         .then((data) => {
             console.log(data);
+            
             res.render("updateMovie", { data });
         });
 };
@@ -45,7 +46,7 @@ module.exports.updateMovieData = async (req, res) => {
     let img;
     req.file ? img = req.file.path : img = singleData.img;
     req.file && fs.unlinkSync(singleData.img);
-    req.body.image = img;
+    req.body.img = img;
     await schema.findByIdAndUpdate(req.body.id, req.body).then(() => {
         res.redirect("/")
     })

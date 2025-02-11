@@ -7,9 +7,9 @@ module.exports.addAdmin = (req, res) => {
     res.render("addAdmin")
 }
 module.exports.addAdminData = async (req, res) => {    
-    console.log(req.body);
+    console.log(req.body);  
     await schema.create(req.body).then(()=>{
-        res.redirect("/");
+        res.redirect("/addAdmin");
     })
     // await schema.create(req.body)
     //     .then(() => {

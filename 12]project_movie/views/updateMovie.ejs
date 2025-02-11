@@ -3,19 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Update Movie</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <form action="/updateMovieData" method="post" enctype="multipart/form-data">
-        <input type="text" value="<%=data.id%>">
-        <input type="text" name="title" value="<%=data.title%>" placeholder="Enter Movie Title">
-        <input type="date" name="date" value="<%=data.date%>">
-        <input type="time" name="time" value="<%=data.time%>">
-        <input type="text" name="location" value="<%=data.location%>" placeholder="Enter location">
-        <input type="file" name="img" value="<%=data.img%>">
-        <img src="/<%=data.img%>" class="w-[250px] h-[250px]" alt="">
-        <input type="number" name="price" value="<%=data.price%>" placeholder="Enter Price">
-        <button type="submit">Update Movie</button>
+<body class="bg-gray-100 flex justify-center items-center min-h-screen">
+    <form action="/updateMovieData" method="post" enctype="multipart/form-data" class="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg">
+        <input type="hidden" name="id" value="<%=data.id%>">
+
+        <label class="block mb-2 text-gray-700">Movie Title</label>
+        <input type="text" name="title" value="<%=data.title%>" placeholder="Enter Movie Title" class="w-full p-2 border border-gray-300 rounded-lg mb-4 focus:ring-2 focus:ring-blue-500">
+
+        <label class="block mb-2 text-gray-700">Date</label>
+        <input type="date" name="date" value="<%=data.date%>" class="w-full p-2 border border-gray-300 rounded-lg mb-4 focus:ring-2 focus:ring-blue-500">
+
+        <label class="block mb-2 text-gray-700">Time</label>
+        <input type="time" name="time" value="<%=data.time%>" class="w-full p-2 border border-gray-300 rounded-lg mb-4 focus:ring-2 focus:ring-blue-500">
+
+        <label class="block mb-2 text-gray-700">Location</label>
+        <input type="text" name="location" value="<%=data.location%>" placeholder="Enter location" class="w-full p-2 border border-gray-300 rounded-lg mb-4 focus:ring-2 focus:ring-blue-500">
+
+        <label class="block mb-2 text-gray-700">Current Image</label>
+        <img src="/<%=data.img%>" class="w-64 h-64 object-cover rounded-lg mb-4 border border-gray-300" alt="Movie Image">
+
+        <label class="block mb-2 text-gray-700">Upload New Image</label>
+        <input type="file" name="img" class="w-full p-2 border border-gray-300 rounded-lg mb-4 focus:ring-2 focus:ring-blue-500">
+
+        <label class="block mb-2 text-gray-700">Price</label>
+        <input type="number" name="price" value="<%=data.price%>" placeholder="Enter Price" class="w-full p-2 border border-gray-300 rounded-lg mb-4 focus:ring-2 focus:ring-blue-500">
+
+        <button type="submit" class="w-full bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 transition">Update Movie</button>
     </form>
 </body>
 </html>
