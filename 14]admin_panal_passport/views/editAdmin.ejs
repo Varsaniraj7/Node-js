@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon.png">
+    <title>Matrix Template - The Ultimate Multipurpose admin template</title>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/libs/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/libs/jquery-minicolors/jquery.minicolors.css">
+    <link rel="stylesheet" type="text/css"
+        href="/assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/libs/quill/dist/quill.snow.css">
+    <link href="/dist/css/style.min.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <%- include("header")%>
+            <!-- ============================================================== -->
+            <!-- End Topbar header -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Left Sidebar - style you can find in sidebar.scss  -->
+            <!-- ============================================================== -->
+            <%- include("aside")%>
+                <!-- ============================================================== -->
+                <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Page wrapper  -->
+                <!-- ============================================================== -->
+                <div class="page-wrapper">
+                    <!-- ============================================================== -->
+                    <!-- Bread crumb and right sidebar toggle -->
+                    <!-- ============================================================== -->
+                    <div class="page-breadcrumb">
+                        <div class="row">
+                            <div class="col-12 d-flex no-block align-items-center">
+                                <h4 class="page-title">Admin Update Data Form</h4>
+                                <div class="ml-auto text-right">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">Library</li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End Bread crumb and right sidebar toggle -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Container fluid  -->
+                    <!-- ============================================================== -->
+                    <div class="container-fluid">
+                        <!-- ============================================================== -->
+                        <!-- Start Page Content -->
+                        <!-- ============================================================== -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <form class="form-horizontal" method="post" enctype="multipart/form-data"
+                                        action="/editAdminData">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Personal Info</h4>
+                                            <input type="text" name="id" value="<%=data.id%>" hidden>
+                                            <div class="form-group row">
+                                                <label for="fname"
+                                                    class="col-sm-3 text-right control-label col-form-label">First
+                                                    Name</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" name="fname"
+                                                        value="<%=data.fname%>" id="fname"
+                                                        placeholder="First Name Here">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="lname"
+                                                    class="col-sm-3 text-right control-label col-form-label">Last
+                                                    Name</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" name="lname"
+                                                        value="<%=data.lname%>" id="lname" placeholder="Last Name Here">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="email1"
+                                                    class="col-sm-3 text-right control-label col-form-label">Email</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" name="email"
+                                                        value="<%=data.email%>" id="email1" placeholder="Email Here">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="pass"
+                                                    class="col-sm-3 text-right control-label col-form-label">Password</label>
+                                                <div class="col-sm-9">
+                                                    <input type="password" class="form-control" name="password"
+                                                        value="<%=data.password%>" id="pass"
+                                                        placeholder="Password Here">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 text-right control-label col-form-label">Select
+                                                    City</label>
+                                                <div class="col-md-9">
+                                                    <select name="scity" class="select2 form-control custom-select"
+                                                        style="width: 100%; height:36px;">
+                                                        <option>Select</option>
+
+                                                        <optgroup label="Northern India">
+                                                            <option value="JK" <%=data.scity==="JK" ? "selected" : "" %>
+                                                                >Jammu & Kashmir</option>
+                                                            <option value="HP" <%=data.scity==="HP" ? "selected" : "" %>
+                                                                >Himachal Pradesh</option>
+                                                            <option value="PB" <%=data.scity==="PB" ? "selected" : "" %>
+                                                                >Punjab</option>
+                                                            <option value="UT" <%=data.scity==="UT" ? "selected" : "" %>
+                                                                >Uttarakhand</option>
+                                                            <option value="HR" <%=data.scity==="HR" ? "selected" : "" %>
+                                                                >Haryana</option>
+                                                            <option value="DL" <%=data.scity==="DL" ? "selected" : "" %>
+                                                                >Delhi</option>
+                                                            <option value="RJ" <%=data.scity==="RJ" ? "selected" : "" %>
+                                                                >Rajasthan</option>
+                                                            <option value="UP" <%=data.scity==="UP" ? "selected" : "" %>
+                                                                >Uttar Pradesh</option>
+                                                        </optgroup>
+
+                                                        <optgroup label="Western India">
+                                                            <option value="GJ" <%=data.scity==="GJ" ? "selected" : "" %>
+                                                                >Gujarat</option>
+                                                            <option value="MH" <%=data.scity==="MH" ? "selected" : "" %>
+                                                                >Maharashtra</option>
+                                                            <option value="GA" <%=data.scity==="GA" ? "selected" : "" %>
+                                                                >Goa</option>
+                                                            <option value="MP" <%=data.scity==="MP" ? "selected" : "" %>
+                                                                >Madhya Pradesh</option>
+                                                            <option value="CG" <%=data.scity==="CG" ? "selected" : "" %>
+                                                                >Chhattisgarh</option>
+                                                        </optgroup>
+
+                                                        <optgroup label="Southern India">
+                                                            <option value="AP" <%=data.scity==="AP" ? "selected" : "" %>
+                                                                >Andhra Pradesh</option>
+                                                            <option value="KA" <%=data.scity==="KA" ? "selected" : "" %>
+                                                                >Karnataka</option>
+                                                            <option value="KL" <%=data.scity==="KL" ? "selected" : "" %>
+                                                                >Kerala</option>
+                                                            <option value="TN" <%=data.scity==="TN" ? "selected" : "" %>
+                                                                >Tamil Nadu</option>
+                                                            <option value="TS" <%=data.scity==="TS" ? "selected" : "" %>
+                                                                >Telangana</option>
+                                                            <option value="PY" <%=data.scity==="PY" ? "selected" : "" %>
+                                                                >Puducherry</option>
+                                                            <option value="LD" <%=data.scity==="LD" ? "selected" : "" %>
+                                                                >Lakshadweep</option>
+                                                        </optgroup>
+
+                                                        <optgroup label="Eastern India">
+                                                            <option value="WB" <%=data.scity==="WB" ? "selected" : "" %>
+                                                                >West Bengal</option>
+                                                            <option value="OR" <%=data.scity==="OR" ? "selected" : "" %>
+                                                                >Odisha</option>
+                                                            <option value="BR" <%=data.scity==="BR" ? "selected" : "" %>
+                                                                >Bihar</option>
+                                                            <option value="JH" <%=data.scity==="JH" ? "selected" : "" %>
+                                                                >Jharkhand</option>
+                                                        </optgroup>
+
+                                                        <optgroup label="Northeastern India">
+                                                            <option value="AS" <%=data.scity==="AS" ? "selected" : "" %>
+                                                                >Assam</option>
+                                                            <option value="AR" <%=data.scity==="AR" ? "selected" : "" %>
+                                                                >Arunachal Pradesh</option>
+                                                            <option value="MN" <%=data.scity==="MN" ? "selected" : "" %>
+                                                                >Manipur</option>
+                                                            <option value="ML" <%=data.scity==="ML" ? "selected" : "" %>
+                                                                >Meghalaya</option>
+                                                            <option value="MZ" <%=data.scity==="MZ" ? "selected" : "" %>
+                                                                >Mizoram</option>
+                                                            <option value="NL" <%=data.scity==="NL" ? "selected" : "" %>
+                                                                >Nagaland</option>
+                                                            <option value="SK" <%=data.scity==="SK" ? "selected" : "" %>
+                                                                >Sikkim</option>
+                                                            <option value="TR" <%=data.scity==="TR" ? "selected" : "" %>
+                                                                >Tripura</option>
+                                                        </optgroup>
+
+                                                        <optgroup label="Union Territories">
+                                                            <option value="AN" <%=data.scity==="AN" ? "selected" : "" %>
+                                                                >Andaman & Nicobar Islands</option>
+                                                            <option value="CH" <%=data.scity==="CH" ? "selected" : "" %>
+                                                                >Chandigarh</option>
+                                                            <option value="DN" <%=data.scity==="DN" ? "selected" : "" %>
+                                                                >Dadra & Nagar Haveli and Daman & Diu</option>
+                                                            <option value="LD" <%=data.scity==="LD" ? "selected" : "" %>
+                                                                >Ladakh</option>
+                                                        </optgroup>
+                                                    </select>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 text-right control-label col-form-label">Select
+                                                Image</label>
+                                            <div class="col-md-9 pr-4">
+                                                <div class="custom-file">
+                                                    <input type="file" name="image" class="custom-file-input" value="<%=data.image%>"
+                                                        id="validatedCustomFile">
+                                                    <label class="custom-file-label" for="validatedCustomFile">Choose
+                                                        file...</label>
+                                                    <div class="invalid-feedback">Example invalid custom file feedback
+                                                    </div>
+                                                </div>
+
+                                                <label class="block mb-2 text-gray-700">Current Image</label>
+                                                <img src="/<%=data.image%>"
+                                                    style="width: 100px; height: 100px;"
+                                                    alt="Movie Image">
+
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 text-right control-label col-form-label">Select
+                                                Gender</label>
+                                            <div class="col-md-9">
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" name="gender" value="male"
+                                                        class="custom-control-input" id="customControlValidation1"
+                                                        required <%=data.gender=="male" ? "checked" : "" %>>
+                                                    <label class="custom-control-label"
+                                                        for="customControlValidation1">Male</label>
+                                                </div>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" name="gender" value="female"
+                                                        class="custom-control-input" id="customControlValidation2"
+                                                        required <%=data.gender=="female" ? "checked" : "" %>>
+                                                    <label class="custom-control-label"
+                                                        for="customControlValidation2">Female</label>
+                                                </div>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" name="gender" value="others"
+                                                        class="custom-control-input" id="customControlValidation3"
+                                                        required <%=data.gender=="others" ? "checked" : "" %>>
+                                                    <label class="custom-control-label"
+                                                        for="customControlValidation3">Others</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 text-right control-label col-form-label">Select
+                                                Hobby</label>
+                                            <div class="col-md-9">
+                                                <div class="custom-control custom-checkbox mr-sm-2">
+                                                    <input type="checkbox" name="hobby" value="cricket"
+                                                        class="custom-control-input" id="customControlAutosizing1"
+                                                        <%=data.hobby && data.hobby.includes("cricket") ? "checked" : ""
+                                                        %>>
+                                                    <label class="custom-control-label"
+                                                        for="customControlAutosizing1">Cricket</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox mr-sm-2">
+                                                    <input type="checkbox" name="hobby" value="vollyball"
+                                                        class="custom-control-input" id="customControlAutosizing2"
+                                                        <%=data.hobby && data.hobby.includes("vollyball") ? "checked"
+                                                        : "" %>>
+                                                    <label class="custom-control-label"
+                                                        for="customControlAutosizing2">Vollyball</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox mr-sm-2">
+                                                    <input type="checkbox" name="hobby" value="football"
+                                                        class="custom-control-input" id="customControlAutosizing3"
+                                                        <%=data.hobby && data.hobby.includes("football") ? "checked"
+                                                        : "" %>>
+                                                    <label class="custom-control-label"
+                                                        for="customControlAutosizing3">Football</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="border-top">
+                                            <div class="card-body">
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ============================================================== -->
+                        <!-- End PAge Content -->
+                        <!-- ============================================================== -->
+                        <!-- ============================================================== -->
+                        <!-- Right sidebar -->
+                        <!-- ============================================================== -->
+                        <!-- .right-sidebar -->
+                        <!-- ============================================================== -->
+                        <!-- End Right sidebar -->
+                        <!-- ============================================================== -->
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End Container fluid  -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- footer -->
+                    <!-- ============================================================== -->
+                    <footer class="footer text-center">
+                        All Rights Reserved by Matrix-admin. Designed and Developed by <a
+                            href="https://wrappixel.com">WrapPixel</a>.
+                    </footer>
+                    <!-- ============================================================== -->
+                    <!-- End footer -->
+                    <!-- ============================================================== -->
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Page wrapper  -->
+                <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="/assets/libs/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="/assets/libs/popper.js/dist/umd/popper.min.js"></script>
+    <script src="/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+    <script src="/assets/extra-libs/sparkline/sparkline.js"></script>
+    <!--Wave Effects -->
+    <script src="/dist/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="/dist/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="/dist/js/custom.min.js"></script>
+    <!-- This Page JS -->
+    <script src="/assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+    <script src="/dist/js/pages/mask/mask.init.js"></script>
+    <script src="/assets/libs/select2/dist/js/select2.full.min.js"></script>
+    <script src="/assets/libs/select2/dist/js/select2.min.js"></script>
+    <script src="/assets/libs/jquery-asColor/dist/jquery-asColor.min.js"></script>
+    <script src="/assets/libs/jquery-asGradient/dist/jquery-asGradient.js"></script>
+    <script src="/assets/libs/jquery-asColorPicker/dist/jquery-asColorPicker.min.js"></script>
+    <script src="/assets/libs/jquery-minicolors/jquery.minicolors.min.js"></script>
+    <script src="/assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="/assets/libs/quill/dist/quill.min.js"></script>
+
+    <script>
+        //***********************************//
+        // For select 2
+        //***********************************//
+        $(".select2").select2();
+
+        /*colorpicker*/
+        $('.demo').each(function () {
+            //
+            // Dear reader, it's actually very easy to initialize MiniColors. For example:
+            //
+            //  $(selector).minicolors();
+            //
+            // The way I've done it below is just for the demo, so don't get confused
+            // by it. Also, data- attributes aren't supported at this time...they're
+            // only used for this demo.
+            //
+            $(this).minicolors({
+                control: $(this).attr('data-control') || 'hue',
+                position: $(this).attr('data-position') || 'bottom left',
+
+                change: function (value, opacity) {
+                    if (!value) return;
+                    if (opacity) value += ', ' + opacity;
+                    if (typeof console === 'object') {
+                        console.log(value);
+                    }
+                },
+                theme: 'bootstrap'
+            });
+
+        });
+        /*datwpicker*/
+        jQuery('.mydatepicker').datepicker();
+        jQuery('#datepicker-autoclose').datepicker({
+            autoclose: true,
+            todayHighlight: true
+        });
+        var quill = new Quill('#editor', {
+            theme: 'snow'
+        });
+
+    </script>
+</body>
+
+</html>
