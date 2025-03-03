@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SeoDash Free Bootstrap Admin Template by Adminmart</title>
+  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/seodashlogo.png" />
+  <link rel="stylesheet" href="../../node_modules/simplebar/dist/simplebar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.min.css" />
+</head>
+
+<body>
+  <!--  Body Wrapper -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <!-- Sidebar Start -->
+    <%- include("aside")%>
+      <!--  Sidebar End -->
+      <!--  Main wrapper -->
+      <div class="body-wrapper">
+        <!--  Header Start -->
+        <%- include("header")%>
+          <!--  Header End -->
+          <div class="container-fluid">
+            <section class="vh-100">
+              <div class="container h-100">
+                <div class="row justify-content-center align-items-center h-100">
+                  <div class="col-12 col-lg-9 col-xl-7">
+                    <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                      <div class="card-body p-4 p-md-5">
+                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Admin Registration Form</h3>
+                        <form method="post" action="/addAdminData" enctype="multipart/form-data">
+
+                          <div class="row">
+                            <div class="col-md-6 mb-4">
+
+                              <div data-mdb-input-init class="form-outline">
+                                <input type="text" name="fname" class="form-control form-control-lg" />
+                                <label class="form-label" for="firstName">First Name</label>
+                              </div>
+
+                            </div>
+                            <div class="col-md-6 mb-4">
+
+                              <div data-mdb-input-init class="form-outline">
+                                <input type="text" name="lname" class="form-control form-control-lg" />
+                                <label class="form-label" for="lastName">Last Name</label>
+                              </div>
+
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-md-6 mb-4 d-flex align-items-center">
+
+                              <div data-mdb-input-init class="form-outline datepicker w-100">
+                                <input type="date" class="form-control form-control-lg" name="bdate" />
+                                <label for="birthdayDate" class="form-label">Birthday</label>
+                              </div>
+
+                            </div>
+                            <div class="col-md-6 mb-4">
+
+                              <h6 class="mb-2 pb-1">Gender: </h6>
+
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="gender" id="femaleGender"
+                                  value="Female" checked />
+                                <label class="form-check-label" for="femaleGender">Female</label>
+                              </div>
+
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="gender" id="maleGender"
+                                  value="Male" />
+                                <label class="form-check-label" for="maleGender">Male</label>
+                              </div>
+
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="gender" id="otherGender"
+                                  value="Other" />
+                                <label class="form-check-label" for="otherGender">Other</label>
+                              </div>
+
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-md-12 mb-4 pb-2">
+
+                              <div data-mdb-input-init class="form-outline">
+                                <input type="email" name="email" class="form-control form-control-lg" />
+                                <label class="form-label" for="emailAddress">Email</label>
+                              </div>
+
+                            </div>
+                            <div class="row">
+                              <div class="col-md-6 mb-4 pb-2">
+                                <div data-mdb-input-init class="form-outline">
+                                  <input type="password" name="password" class="form-control form-control-lg"
+                                    required />
+                                  <label class="form-label" for="password">Password</label>
+                                </div>
+                              </div>
+                              <div class="col-md-6 mb-4 pb-2">
+
+                                <div data-mdb-input-init class="form-outline">
+                                  <input type="tel" name="pnumber" class="form-control form-control-lg" />
+                                  <label class="form-label" for="phoneNumber">Phone Number</label>
+                                </div>
+
+                              </div>
+                            </div>
+
+                            <div class="row">
+                              <div class="col-12">
+
+                                <select name="city" class="select form-control-lg">
+                                  <option value="" disabled selected>Choose city</option>
+                                  <option value="Ahmedabad">Ahmedabad</option>
+                                  <option value="Amreli">Amreli</option>
+                                  <option value="Anand">Anand</option>
+                                  <option value="Aravalli">Aravalli</option>
+                                  <option value="Banaskantha">Banaskantha</option>
+                                  <option value="Bharuch">Bharuch</option>
+                                  <option value="Bhavnagar">Bhavnagar</option>
+                                  <option value="Botad">Botad</option>
+                                  <option value="Chhota Udaipur">Chhota Udaipur</option>
+                                  <option value="Dahod">Dahod</option>
+                                  <option value="Dang">Dang</option>
+                                  <option value="Devbhoomi Dwarka">Devbhoomi Dwarka</option>
+                                  <option value="Gandhinagar">Gandhinagar</option>
+                                  <option value="Gir Somnath">Gir Somnath</option>
+                                  <option value="Jamnagar">Jamnagar</option>
+                                  <option value="Junagadh">Junagadh</option>
+                                  <option value="Kheda">Kheda</option>
+                                  <option value="Kutch">Kutch</option>
+                                  <option value="Mahisagar">Mahisagar</option>
+                                  <option value="Mehsana">Mehsana</option>
+                                  <option value="Morbi">Morbi</option>
+                                  <option value="Narmada">Narmada</option>
+                                  <option value="Navsari">Navsari</option>
+                                  <option value="Panchmahal">Panchmahal</option>
+                                  <option value="Patan">Patan</option>
+                                  <option value="Porbandar">Porbandar</option>
+                                  <option value="Rajkot">Rajkot</option>
+                                  <option value="Sabarkantha">Sabarkantha</option>
+                                  <option value="Surat">Surat</option>
+                                  <option value="Surendranagar">Surendranagar</option>
+                                  <option value="Tapi">Tapi</option>
+                                  <option value="Vadodara">Vadodara</option>
+                                  <option value="Valsad">Valsad</option>
+                                </select>
+                                <label class="form-label select-label">Choose city</label>
+
+
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-12 mb-4 mt-4 pb-2">
+                                <div data-mdb-input-init class="form-outline">
+                                  <input type="file" name="image" class="form-control form-control-lg" />
+                                  <label class="form-label" for="profileImage">Upload Profile Image</label>
+                                </div>
+                              </div>
+                            </div>
+
+
+                            <div class=" pt-2">
+                              <input data-mdb-ripple-init class="btn btn-primary btn-lg" type="submit" value="Submit" />
+                            </div>
+
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <div class=" text-center">
+              <p class="mb-0 fs-4">Design and Developed by <a href="https://adminmart.com/" target="_blank"
+                  class="pe-1 text-primary text-decoration-underline">AdminMart.com</a> Distributed by <a
+                  href="https://themewagon.com/" target="_blank"
+                  class="pe-1 text-primary text-decoration-underline">ThemeWagon</a></p>
+            </div>
+          </div>
+      </div>
+  </div>
+  <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
+  <script src="../assets/js/sidebarmenu.js"></script>
+  <script src="../assets/js/app.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+</body>
+
+</html>
