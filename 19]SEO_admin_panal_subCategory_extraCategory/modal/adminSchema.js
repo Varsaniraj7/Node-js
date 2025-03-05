@@ -3,39 +3,39 @@ const mongoose = require("mongoose");
 const schema = mongoose.Schema({
     fname: {
         type: String,
-        require: true
+        required: true
     },
     lname:{
         type:String,
-        require:true
+        required:true
     },
     bdate:{
         type:String,
-        require:true
+        required:true
     },
     gender:{
         type:String,
-        require:true
+        required:true
     },
     email:{
         type:String,
-        require:true
+        required:true
     },
     password:{
         type:String,
-        require:true
+        required:true
     },
     pnumber:{
         type:Number,
-        require:true
+        required:true
     },
     city:{
         type:String,
-        require:true
+        required:true
     },
     image:{
         type:String,
-        require:true
+        required:true
     }
 })
 

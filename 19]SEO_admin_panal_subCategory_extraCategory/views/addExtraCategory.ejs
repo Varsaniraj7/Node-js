@@ -30,17 +30,17 @@
                                         <div class="card shadow-2-strong card-registration"
                                             style="border-radius: 15px;">
                                             <div class="card-body p-4 p-md-5">
-                                                <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Category Form</h3>
-                                                <form method="post" action="/subCategory/addSubCategory"
+                                                <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Extra Category Form</h3>
+                                                <form method="post" action="/extraCategory/addExtraCategory"
                                                     >
 
                                                     <div class="row">
                                                         <div class="row">
                                                             <div class="col-12 mb-4 mt-4 pb-2">
                                                                 <div data-mdb-input-init class="form-outline">
-                                                                    <input type="text" name="subCatName"
+                                                                    <input type="text" name="extraCatName"
                                                                         class="form-control form-control-lg" />
-                                                                    <label class="form-label">Sub Category Name</label>
+                                                                    <label class="form-label">Extra Category Name</label>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -48,13 +48,13 @@
                                                         <div class="row">
                                                             <div class="row">
                                                                 <div class="col-12 mb-4 mt-4 pb-2">
-                                                                    <label for="categoryId" class="form-label">Select
+                                                                    <label for="subCategoryId" class="form-label">Select Sub
                                                                         Category</label>
-                                                                    <select id="categoryId" name="categoryId"
+                                                                    <select id="subCategoryId" name="subCategoryId"
                                                                         class="form-select form-select-lg">
                                                                         <% data.map((e, i)=> { %>
                                                                             <option value="<%= e.id %>">
-                                                                                <%= e.catName %>
+                                                                                <%= e.subCatName %>
                                                                             </option>
                                                                             <% }) %>
                                                                     </select>
