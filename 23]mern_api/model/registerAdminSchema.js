@@ -13,6 +13,9 @@ const schema = mongoose.Schema({
         type:String,
         require:true,
     },
+    role:{
+        type:String,
+    },
     email:{
         type:String,
         require:true,

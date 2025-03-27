@@ -79,7 +79,7 @@ module.exports.login = async (req, res) => {
     }
 };
 
-
+// IT is checking
 module.exports.logout = (req, res) => {
     try {
         res.cookie("jwt", "", { maxAge: 0 })
