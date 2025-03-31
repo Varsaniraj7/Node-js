@@ -1,0 +1,10 @@
+<%- include("../layouts/navbar") %>
+<h2>All Articles</h2>
+<ul>
+  <% articles.forEach(article => { %>
+    <li>
+      <a href="/articles/<%= article._id %>"><%= article.title %></a>
+      <p>By <%= article.author.username %></p>
+    </li>
+  <% }) %>
+</ul>

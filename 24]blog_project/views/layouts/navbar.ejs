@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">MyBlog</a>
+            <div class="nav-links">
+                <a href="/articles">Articles</a>
+                <% if (!user) { %>
+                    <a href="/auth/login">Login</a>
+                    <a href="/auth/register">Register</a>
+                <% } else { %>
+                    <a href="/articles/new">New Article</a>
+                    <a href="/auth/logout" class="logout">Logout</a>
+                <% } %>
+            </div>
+        </div>
+    </nav>
+</body>
+</html>
